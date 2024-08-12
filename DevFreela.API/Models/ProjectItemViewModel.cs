@@ -18,5 +18,10 @@ namespace DevFreela.API.Models
         public string ClientName { get; private set; }
         public string FreelancerName { get; set; }
         public decimal TotalCost { get; set; }
+
+        public static ProjectItemViewModel FromProject(Project project)
+        {
+            return new ProjectItemViewModel(project.Id, project.Title, project.Description, project.Client.FullName, project.Freelancer.FullName, project.TotalCost);
+        }
     }
 }
