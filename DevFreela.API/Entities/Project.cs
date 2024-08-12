@@ -70,5 +70,10 @@ namespace DevFreela.API.Entities
             Description = description;
             TotalCost = totalCost;
         }
+
+        public void SetAsDeleted()
+        {
+            IsDeleted = true;
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace DevFreela.API.Controllers
 
             var model = ProjectViewModel.FromProject(project);
 
-            return Ok();
+            return Ok(model);
         }
 
         [HttpPost]
@@ -84,7 +84,7 @@ namespace DevFreela.API.Controllers
             if (project is null)
                 return NotFound();
 
-            project.Cancel();
+            project.SetAsDeleted();
 
             _dbContext.Projects.Update(project);
             _dbContext.SaveChanges();
