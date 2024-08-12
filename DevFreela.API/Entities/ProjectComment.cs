@@ -10,10 +10,10 @@
             ID_User = id_User;
         }
 
-        public int ID_Project { get; set; }
-        public int ID_User { get; set; }
-        public string Content { get; set; }
-        public Project Project { get; set; }
-        public User User { get; set; }
+        public int ID_Project { get; private set; }
+        public int ID_User { get; private set; }
+        public string Content { get; private set; }
+        public Project Project { get; private set; }
+        public User User { get; private set; }
     }
 }

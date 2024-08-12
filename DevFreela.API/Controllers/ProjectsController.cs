@@ -32,7 +32,7 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(CreateProjectViewModel model)
+        public IActionResult Post(CreateProjectInputModel model)
         {
             if(_config.Minimum > model.TotalCost || model.TotalCost > _config.Maximum)
                 return BadRequest("Total cost is out of range.");
@@ -41,7 +41,7 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, UpdateProjectViewModel model)
+        public IActionResult Put(int id, UpdateProjectInputModel model)
         {
             return NoContent();
         }
@@ -65,7 +65,7 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpPost("{id}/comments")]
-        public IActionResult PostComment(int id, CreateProjectCommentViewModel model)
+        public IActionResult PostComment(int id, CreateProjectCommentInputModel model)
         {
             return Ok();
         }

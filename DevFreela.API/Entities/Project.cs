@@ -19,17 +19,17 @@ namespace DevFreela.API.Entities
             Comments = new List<ProjectComment>();
         }
 
-        public int ID_Client { get; set; }
-        public int ID_Freelancer { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public decimal TotalCost { get; set; }
-        public DateTime? StartedAt { get; set; }
-        public DateTime? CompletedAt { get; set; }
-        public ProjectStatusEnum Status { get; set; }
-        public User Client { get; set; }
-        public User Freelancer { get; set; }
-        public List<ProjectComment> Comments { get; set; }
+        public int ID_Client { get; private set; }
+        public int ID_Freelancer { get; private set; }
+        public string Title { get; private set; }
+        public string Description { get; private set; }
+        public decimal TotalCost { get; private set; }
+        public DateTime? StartedAt { get; private set; }
+        public DateTime? CompletedAt { get; private set; }
+        public ProjectStatusEnum Status { get; private set; }
+        public User Client { get; private set; }
+        public User Freelancer { get; private set; }
+        public List<ProjectComment> Comments { get; private set; }
 
         public void Cancel()
         {

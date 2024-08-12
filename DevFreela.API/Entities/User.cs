@@ -16,13 +16,13 @@
             Comments = new List<ProjectComment>();
         }
 
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public DateTime BirthDate { get; set; }
-        public bool Active { get; set; }
-        public List<UserSkill> Skills { get; set; }
-        public List<Project> OwnedProjects { get; set; }
-        public List<Project> FreelancerProjects { get; set; }
-        public List<ProjectComment> Comments { get; set; }
+        public string FullName { get; private set; }
+        public string Email { get; private set; }
+        public DateTime BirthDate { get; private set; }
+        public bool Active { get; private set; }
+        public List<UserSkill> Skills { get; private set; }
+        public List<Project> OwnedProjects { get; private set; }
+        public List<Project> FreelancerProjects { get; private set; }
+        public List<ProjectComment> Comments { get; private set; }
     }
 }
