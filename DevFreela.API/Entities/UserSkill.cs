@@ -4,12 +4,12 @@
     {
         public UserSkill(int idUser, int idSkill) : base()
         {
-            ID_User = idUser;
-            ID_Skill = idSkill;
+            IdUser = idUser;
+            IdSkill = idSkill;
         }
 
-        public int ID_User { get; private set; }
-        public int ID_Skill { get; private set; }
+        public int IdUser { get; private set; }
+        public int IdSkill { get; private set; }
         public User User { get; private set; }
         public Skill Skill { get; private set; }
     }

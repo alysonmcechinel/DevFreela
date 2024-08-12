@@ -9,8 +9,8 @@ namespace DevFreela.API.Entities
         public Project(string title, string description, int idClient, int idFreelancer, decimal totalCost)
             : base()
         {
-            ID_Client = idClient;
-            ID_Freelancer = idFreelancer;
+            IdClient = idClient;
+            IdFreelancer = idFreelancer;
             Title = title;
             Description = description;
             TotalCost = totalCost;
@@ -19,8 +19,8 @@ namespace DevFreela.API.Entities
             Comments = new List<ProjectComment>();
         }
 
-        public int ID_Client { get; private set; }
-        public int ID_Freelancer { get; private set; }
+        public int IdClient { get; private set; }
+        public int IdFreelancer { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
         public decimal TotalCost { get; private set; }

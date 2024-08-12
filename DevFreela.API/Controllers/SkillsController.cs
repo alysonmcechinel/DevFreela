@@ -14,7 +14,7 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(CreateSkillInputModel viewModel)
+        public IActionResult Post(CreateSkillInputModel model)
         {
             return Ok();
         }

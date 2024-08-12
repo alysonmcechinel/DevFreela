@@ -8,10 +8,17 @@ namespace DevFreela.API.Controllers
     public class UsersController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Post(CreateUserInputModel viewModel)
+        public IActionResult Post(CreateUserInputModel model)
         {
             return Ok();
         }
+
+        [HttpPost("{id}/skills")]
+        public IActionResult PostSkill(UserSkillInputModel model)
+        {
+            return NoContent();
+        }
+
 
         [HttpPut("{id}/profile-picture")]
         public IActionResult PostProfilePicture(int id, IFormFile file)

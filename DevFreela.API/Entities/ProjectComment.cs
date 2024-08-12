@@ -2,16 +2,16 @@
 {
     public class ProjectComment : BaseEntity
     {
-        public ProjectComment(string content, int id_Project, int id_User)
+        public ProjectComment(string content, int idProject, int idUser)
             : base()
         {
             Content = content;
-            ID_Project = id_Project;
-            ID_User = id_User;
+            IdProject = idProject;
+            IdUser = idUser;
         }
 
-        public int ID_Project { get; private set; }
-        public int ID_User { get; private set; }
+        public int IdProject { get; private set; }
+        public int IdUser { get; private set; }
         public string Content { get; private set; }
         public Project Project { get; private set; }
         public User User { get; private set; }
