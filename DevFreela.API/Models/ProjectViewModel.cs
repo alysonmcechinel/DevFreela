@@ -4,7 +4,7 @@ namespace DevFreela.API.Models
 {
     public class ProjectViewModel
     {
-        public ProjectViewModel(int id, int idClient, int idFreelancer, string title, string description, string clientName, decimal totalCost, List<ProjectComment> comments)
+        public ProjectViewModel(int id, int idClient, int idFreelancer, string title, string description, string clientName, string freelancerName, decimal totalCost, List<ProjectComment> comments)
         {
             Id = id;
             IdClient = idClient;
@@ -12,6 +12,7 @@ namespace DevFreela.API.Models
             Title = title;
             Description = description;
             ClientName = clientName;
+            FreelancerName = freelancerName;
             TotalCost = totalCost;
             Comments = comments.Select(x => x.Content).ToList();
         }
@@ -28,7 +29,7 @@ namespace DevFreela.API.Models
 
         public static ProjectViewModel FromProject(Project entity)
         {
-            return new (entity.Id, entity.IdClient, entity.IdFreelancer, entity.Title, entity.Description, entity.Client.FullName, entity.TotalCost, entity.Comments);
+            return new (entity.Id, entity.IdClient, entity.IdFreelancer, entity.Title, entity.Description, entity.Client.FullName, entity.Freelancer.FullName ,entity.TotalCost, entity.Comments);
         }
     }
 }

@@ -20,12 +20,15 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(string search = "")
+        public IActionResult Get(string search = "", int page = 1, int rows = 3)
         {
             var projects = _dbContext.Projects
                 .Include(x => x.Client)
                 .Include(x => x.Freelancer)
-                .Where(x => !x.IsDeleted).ToList();
+                .Where(x => !x.IsDeleted && (search == "" || x.Title.Contains(search) || x.Description.Contains(search)))
+                .Skip(page * rows) // pagination
+                .Take(rows) // pagination
+                .ToList();
 
             var model = projects.Select(ProjectItemViewModel.FromProject).ToList();
 

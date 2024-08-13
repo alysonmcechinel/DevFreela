@@ -13,7 +13,9 @@ builder.Services.Configure<FreelanceTotalCostConfig>(builder.Configuration.GetSe
 //builder.Services.AddSingleton<IConfigService, ConfigService>();
 builder.Services.AddScoped<IConfigService, ConfigService>();
 
-builder.Services.AddDbContext<DevFreelaDbContext>(o => o.UseInMemoryDatabase("dbDevFreela"));
+//builder.Services.AddDbContext<DevFreelaDbContext>(o => o.UseInMemoryDatabase("dbDevFreela"));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DevFreelaDbContext>(o => o.UseSqlServer(connectionString));
 
 builder.Services.AddExceptionHandler<ApiExceptionHandler>();
 builder.Services.AddProblemDetails();
