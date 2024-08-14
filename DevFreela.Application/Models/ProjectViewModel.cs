@@ -1,6 +1,6 @@
-﻿using DevFreela.API.Entities;
+﻿using DevFreela.Core.Entities;
 
-namespace DevFreela.API.Models
+namespace DevFreela.Application.Models
 {
     public class ProjectViewModel
     {
@@ -29,7 +29,7 @@ namespace DevFreela.API.Models
 
         public static ProjectViewModel FromProject(Project entity)
         {
-            return new (entity.Id, entity.IdClient, entity.IdFreelancer, entity.Title, entity.Description, entity.Client.FullName, entity.Freelancer.FullName ,entity.TotalCost, entity.Comments);
+            return new(entity.Id, entity.IdClient, entity.IdFreelancer, entity.Title, entity.Description, entity.Client.FullName, entity.Freelancer.FullName, entity.TotalCost, entity.Comments);
         }
     }
 }
