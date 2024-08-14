@@ -45,10 +45,11 @@ namespace DevFreela.Infrastructure.Persistence
                 .HasForeignKey(pc => pc.IdProject)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            /*builder.Entity<ProjectComment>()
+            builder.Entity<ProjectComment>()
                 .HasOne(pc => pc.User)
                 .WithMany(u => u.Comments)
-                .HasForeignKey(pc => pc.IdUser);*/
+                .HasForeignKey(pc => pc.IdUser)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // User
 
