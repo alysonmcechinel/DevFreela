@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MediatR;
+
+namespace DevFreela.Application.Notification.ProjectCreated
+{
+    public class FreelanceNotificationHandler : INotificationHandler<ProjectCreatedNotification>
+    {
+        public Task Handle(ProjectCreatedNotification notification, CancellationToken cancellationToken)
+        {
+            Console.WriteLine($"Notificando os freela sobre o projeto criado: {notification.Title}");
+
+            return Task.CompletedTask;
+        }
+    }
+}
