@@ -35,7 +35,6 @@ namespace DevFreela.API.Controllers
             // var result = _projectService.Get(search, page, rows);
 
             var query = new GetAllProjectsQuery(search, page, rows);
-
             var result = await _mediator.Send(query);
 
             return Ok(result);
@@ -56,6 +55,9 @@ namespace DevFreela.API.Controllers
         public async Task<IActionResult> Post(InsertProjectCommand command)
         {
             var result = await _mediator.Send(command);
+
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Data }, command);
         }
