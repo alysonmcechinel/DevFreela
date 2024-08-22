@@ -14,7 +14,7 @@ public class ProjectService : IProjectService
         _dbContext = dbContext;
     }
 
-    public ResultViewModel<List<ProjectItemViewModel>> Get(string search, int page, int rows)
+    public ResultViewModel<List<ProjectItemViewModel>> Get(string search, int page = 0, int rows = 3)
     {
         var projects = _dbContext.Projects
             .Include(x => x.Client)

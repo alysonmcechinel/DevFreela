@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DevFreela.Infrastructure.Persistence;
 using DevFreela.Application.Models;
+using DevFreela.Application.Services;
 
 namespace DevFreela.API.Controllers
 {
@@ -11,40 +12,60 @@ namespace DevFreela.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly DevFreelaDbContext _dbContext;
-        public UsersController(DevFreelaDbContext dbContext)
+        private readonly IUsersService _usersService;
+
+        public UsersController(DevFreelaDbContext dbContext, IUsersService usersService)
         {
             _dbContext = dbContext;
+            _usersService = usersService;
+        }
+
+        [HttpGet]
+        public IActionResult Get(string name, bool active = true, int page = 0, int rows = 3)
+        {
+            var result = _usersService.GetUsers(name, active, page, rows);
+
+            if (!result.IsSucess)
+                return NotFound(result.Message);
+
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var user = _dbContext.Users
-                .Include(u => u.Skills)
-                .ThenInclude(x => x.Skill)
-                .SingleOrDefault(x => x.Id == id);
+            var result = _usersService.GetById(id);
 
-            if (user == null)
-                return NotFound();
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
 
-            var model = UserViewModel.FromUser(user);
-
-            return Ok(model);
+            return Ok(result);
         }
 
         [HttpPost]
         public IActionResult Post(CreateUserInputModel model)
         {
-            var user = new User(model.FullName, model.Email, model.BirthDate);
+            var result = _usersService.Insert(model);
 
-            _dbContext.Users.Add(user);
-            _dbContext.SaveChanges();
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
+
+            return CreatedAtAction(nameof(GetById), new { id = result.Data });
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(UpdateUserInputModel model)
+        {
+            var result = _usersService.Update(model);
+
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
 
             return NoContent();
         }
 
         [HttpPost("{id}/skills")]
-        public IActionResult PostSkill(int id, UserSkillInputModel model)
+        public IActionResult InsertSkill(int id, UserSkillInputModel model)
         {
             var userSkill = model.IdsSkill.Select(x => new UserSkill(id, x)).ToList();
 
