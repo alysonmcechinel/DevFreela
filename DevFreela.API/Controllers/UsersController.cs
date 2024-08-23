@@ -11,17 +11,15 @@ namespace DevFreela.API.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private readonly DevFreelaDbContext _dbContext;
-        private readonly IUsersService _usersService;
+        private readonly IUserService _usersService;
 
-        public UsersController(DevFreelaDbContext dbContext, IUsersService usersService)
+        public UsersController(IUserService usersService)
         {
-            _dbContext = dbContext;
             _usersService = usersService;
         }
 
         [HttpGet]
-        public IActionResult Get(string name, bool active = true, int page = 0, int rows = 3)
+        public IActionResult Get(string name = "", bool active = true, int page = 0, int rows = 3)
         {
             var result = _usersService.GetUsers(name, active, page, rows);
 
@@ -50,7 +48,7 @@ namespace DevFreela.API.Controllers
             if (!result.IsSucess)
                 return BadRequest(result.Message);
 
-            return CreatedAtAction(nameof(GetById), new { id = result.Data });
+            return CreatedAtAction(nameof(GetById), new { id = result.Data }, model);
         }
 
         [HttpPut("{id}")]
@@ -67,10 +65,21 @@ namespace DevFreela.API.Controllers
         [HttpPost("{id}/skills")]
         public IActionResult InsertSkill(int id, UserSkillInputModel model)
         {
-            var userSkill = model.IdsSkill.Select(x => new UserSkill(id, x)).ToList();
+            var result = _usersService.InsertSkill(id, model);
 
-            _dbContext.UserSkills.AddRange(userSkill);
-            _dbContext.SaveChanges();
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _usersService.Delete(id);
+
+            if (!result.IsSucess)
+                return BadRequest(result.Message);
 
             return NoContent();
         }

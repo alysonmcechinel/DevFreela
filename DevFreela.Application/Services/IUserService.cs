@@ -7,13 +7,13 @@ using DevFreela.Application.Models;
 
 namespace DevFreela.Application.Services
 {
-    public interface IUsersService
+    public interface IUserService
     {
         ResultViewModel<List<UserViewModel>> GetUsers(string name, bool active = true, int page = 0, int rows = 3);
         ResultViewModel<UserViewModel> GetById(int id);
         ResultViewModel<int> Insert(CreateUserInputModel model);
+        ResultViewModel InsertSkill(int id, UserSkillInputModel model);
         ResultViewModel Update(UpdateUserInputModel model);
         ResultViewModel Delete(int id);
-        ResultViewModel ToggleUserStatus(int id);
     }
 }
