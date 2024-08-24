@@ -13,17 +13,18 @@ namespace DevFreela.Application
 {
     public static class ApplicationModule
     {
-        public static IServiceCollection AddApliCollection(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddServices()
-                    .AddHandlers();
+            services
+                .AddServices()
+                .AddHandlers();
 
             return services;
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IProjectService, ProjectService>();
+            // services.AddScoped<IProjectService, ProjectService>(); não esta sendo mais usado
             services.AddScoped<IUserService, UserService>();
 
             return services;
@@ -38,5 +39,10 @@ namespace DevFreela.Application
 
             return services;
         }
+
+        // comments
+        // builder.Services.AddSingleton<IConfigService, ConfigService>(); config injeção de depedencia
+        // builder.Services.AddScoped<IConfigService, ConfigService>(); config injeção de depedencia
+        // se não for uma aplicação muito grande deixar na Program.cs / Start.cs
     }
 }
