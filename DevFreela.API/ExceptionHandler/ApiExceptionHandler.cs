@@ -10,7 +10,7 @@ namespace DevFreela.API.ExceptionHandler
             var details = new ProblemDetails
             {
                 Status = StatusCodes.Status500InternalServerError,
-                Title = "An error occurred while processing your request."
+                Title = "Ocorreu um erro ao processar sua solicitação."
             };
 
             // Fazer o tratamento de exceção, logar, etc.
