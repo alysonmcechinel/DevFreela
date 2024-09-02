@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DevFreela.Application.Models;
 using MediatR;
 
-namespace DevFreela.Application.Querys.GetProjectById
+namespace DevFreela.Application.Querys.Project
 {
     public class GetProjectByIdQuery : IRequest<ResultViewModel<ProjectViewModel>>
     {

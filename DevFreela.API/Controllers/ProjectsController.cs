@@ -1,16 +1,11 @@
-﻿using DevFreela.Application.Commands.CompleteProject;
-using DevFreela.Application.Commands.DeleteProject;
-using DevFreela.Application.Commands.InsertProject;
-using DevFreela.Application.Commands.StartProject;
-using DevFreela.Application.Commands.UpdateProject;
+﻿using DevFreela.Application.Commands.Project;
 using DevFreela.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using DevFreela.Infrastructure.Persistence;
 using DevFreela.Application.Models;
-using DevFreela.Application.Querys.GetAllProjects;
-using DevFreela.Application.Querys.GetProjectById;
+using DevFreela.Application.Querys.Project;
 using DevFreela.Application.Services;
 using MediatR;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DevFreela.Application.Models;
 using MediatR;
 
-namespace DevFreela.Application.Commands.CompleteProject
+namespace DevFreela.Application.Commands.Project
 {
     public class CompleteProjectCommand : IRequest<ResultViewModel>
     {

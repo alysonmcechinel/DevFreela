@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DevFreela.Application.Models;
 using MediatR;
 
-namespace DevFreela.Application.Commands.DeleteProject
+namespace DevFreela.Application.Commands.Project
 {
     public class DeleteProjectCommand : IRequest<ResultViewModel>
     {

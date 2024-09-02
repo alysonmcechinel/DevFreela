@@ -9,7 +9,7 @@ using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevFreela.Application.Commands.StartProject
+namespace DevFreela.Application.Commands.Project
 {
     public class StartProjectHandler : IRequestHandler<StartProjectCommand, ResultViewModel>
     {

@@ -10,7 +10,7 @@ using DevFreela.Application.Notification.ProjectCreated;
 using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence.Repositories;
 
-namespace DevFreela.Application.Commands.InsertProject
+namespace DevFreela.Application.Commands.Project
 {
     public class InsertProjectHandler : IRequestHandler<InsertProjectCommand, ResultViewModel<int>>
     {

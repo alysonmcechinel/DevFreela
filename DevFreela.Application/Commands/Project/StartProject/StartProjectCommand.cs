@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DevFreela.Application.Models;
 using MediatR;
 
-namespace DevFreela.Application.Commands.StartProject
+namespace DevFreela.Application.Commands.Project
 {
     public class StartProjectCommand : IRequest<ResultViewModel>
     {

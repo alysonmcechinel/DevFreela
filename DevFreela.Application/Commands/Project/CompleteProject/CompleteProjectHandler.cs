@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure.Core;
 using DevFreela.Application.Models;
 using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevFreela.Application.Commands.DeleteProject
+namespace DevFreela.Application.Commands.Project
 {
-    public class DeleteProjectHandler : IRequestHandler<DeleteProjectCommand, ResultViewModel>
+    public class CompleteProjectHandler : IRequestHandler<CompleteProjectCommand, ResultViewModel>
     {
         private readonly IProjectRepository _projectRepository;
 
-        public DeleteProjectHandler(IProjectRepository projectRepository)
+        public CompleteProjectHandler(IProjectRepository projectRepository)
         {
             _projectRepository = projectRepository;
         }
 
-        public async Task<ResultViewModel> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel> Handle(CompleteProjectCommand request, CancellationToken cancellationToken)
         {
             var project = await _projectRepository.GetById(request.Id);
 
             if (project is null)
                 return ResultViewModel.Error("Projeto não existe!!");
 
-            project.SetAsDeleted();
+            project.Complete();
 
             await _projectRepository.Update(project);
 

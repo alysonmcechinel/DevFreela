@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevFreela.Application.Commands.InsertProject;
+using DevFreela.Application.Commands.Project;
 using DevFreela.Application.Models;
 using DevFreela.Application.Services;
 using DevFreela.Application.Validators;
