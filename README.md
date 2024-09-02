@@ -37,5 +37,10 @@ Este projeto faz parte da formação em ASP.NET Core oferecida pela plataforma N
 - Notificação com MediatR.
 
 ### 5. Padrão Repository com ASP.NET Core
+- Padrão Repository;
+- Padrões de Refatoração;
+- Implementando o Padrão Repository.
 
 ### 6. Validação de APIs com ASP.NET Core
+- Validação de APIs;
+- FluentValidation.
