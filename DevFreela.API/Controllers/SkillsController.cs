@@ -26,6 +26,12 @@ namespace DevFreela.API.Controllers
             return Ok(skills);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok();
+        }
+
         [HttpPost]
         public IActionResult Post(CreateSkillInputModel model)
         {
@@ -35,6 +41,18 @@ namespace DevFreela.API.Controllers
             _dbContext.SaveChanges();
 
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, CreateSkillInputModel model)
+        {
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            return Ok();
         }
     }
 }
