@@ -27,12 +27,12 @@ namespace DevFreela.Application.Commands.Project
         {
             var project = request.ToProject();
 
-            await _projectRepository.Add(project);
+            var id = await _projectRepository.Add(project);
 
             var projectCreatedNotification = new ProjectCreatedNotification(project.Id, project.Title, project.TotalCost);
             await _mediator.Publish(projectCreatedNotification);
 
-            return ResultViewModel<int>.Sucess(project.Id);
+            return ResultViewModel<int>.Sucess(id);
         }
     }
 }

@@ -40,8 +40,6 @@ namespace DevFreela.Core.Entities
             }
         }
 
-
-
         public void Start()
         {
             if (Status != ProjectStatusEnum.Created)
