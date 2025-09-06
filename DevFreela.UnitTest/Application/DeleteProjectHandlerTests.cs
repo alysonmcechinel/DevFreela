@@ -1,8 +1,10 @@
 ﻿using DevFreela.Application.Commands.Project;
 using DevFreela.Core.Entities;
 using DevFreela.Core.Repositories;
+using FluentAssertions;
 using Moq;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 
 namespace DevFreela.UnitTest.Application;
 
@@ -46,6 +48,9 @@ public class DeleteProjectHandlerTests
         // Assert
         Assert.False(result.IsSucess);
         Assert.Equal(DeleteProjectHandler.PROJECT_NOT_FOUND_MESSAGE, result.Message);
+
+        // Assert with FluentAssertions
+        result.IsSucess.Should().BeFalse();
 
         await repository.Received(1).GetById(Arg.Any<int>());
         await repository.DidNotReceive().Update(Arg.Any<Project>());
