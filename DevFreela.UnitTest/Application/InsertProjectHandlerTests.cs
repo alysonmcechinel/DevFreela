@@ -1,6 +1,7 @@
 ﻿using DevFreela.Application.Commands.Project;
 using DevFreela.Core.Entities;
 using DevFreela.Core.Repositories;
+using DevFreela.UnitTest.Fakes;
 using FluentAssertions;
 using MediatR;
 using Moq;
@@ -19,14 +20,16 @@ public class InsertProjectHandlerTests
         var repository = Substitute.For<IProjectRepository>();
         repository.Add(Arg.Any<Project>()).Returns(Task.FromResult(1));
 
-        var command = new InsertProjectCommand
-        {
-            Title = "Projeto Teste",
-            Description = "Uma descrição legal do projeto",
-            TotalCost = 2500,
-            IdClient = 1,
-            IdFreelancer = 1
-        };
+        //var command = new InsertProjectCommand
+        //{
+        //    Title = "Projeto Teste",
+        //    Description = "Uma descrição legal do projeto",
+        //    TotalCost = 2500,
+        //    IdClient = 1,
+        //    IdFreelancer = 1
+        //};
+
+        var command = FakeDataHelper.CreateFakeInsertProjectCommand();
 
         var handler = new InsertProjectHandler(repository, mediator);
 
@@ -57,14 +60,16 @@ public class InsertProjectHandlerTests
         var repository = Mock.Of<IProjectRepository>(x => x.Add(It.IsAny<Project>()) == Task.FromResult(ID));
         var mediator = Mock.Of<IMediator>();
 
-        var command = new InsertProjectCommand
-        {
-            Title = "Projeto Teste",
-            Description = "Uma descrição legal do projeto",
-            TotalCost = 2500,
-            IdClient = 1,
-            IdFreelancer = 1
-        };
+        //var command = new InsertProjectCommand
+        //{
+        //    Title = "Projeto Teste",
+        //    Description = "Uma descrição legal do projeto",
+        //    TotalCost = 2500,
+        //    IdClient = 1,
+        //    IdFreelancer = 1
+        //};
+
+        var command = FakeDataHelper.CreateFakeInsertProjectCommand();
 
         var handler = new InsertProjectHandler(repository, mediator);
 

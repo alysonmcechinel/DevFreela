@@ -1,5 +1,6 @@
 ﻿using DevFreela.Core.Entities;
 using DevFreela.Core.Enums;
+using DevFreela.UnitTest.Fakes;
 using FluentAssertions;
 
 namespace DevFreela.UnitTest;
@@ -10,7 +11,9 @@ public class ProjectTests
     public void ProjectIsCreated_Start_Succes()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        // atento ao status
+        var project = FakeDataHelper.CreateFakeProject();
 
         // Act
         project.Start();
@@ -31,7 +34,8 @@ public class ProjectTests
     public void ProjectIsInvalidState_Start_ThrowException()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
         project.Start();
 
         // Act + Assert
@@ -48,7 +52,8 @@ public class ProjectTests
     public void ProjectIsInProgress_Complete_Succes()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
         project.Start();
 
         // Act
@@ -68,7 +73,8 @@ public class ProjectTests
     public void ProjectIsCreated_Complete_ThrowException()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
 
         // Act
         project.Complete();
@@ -82,7 +88,8 @@ public class ProjectTests
     public void ProjectIsInProgress_SetPaymentPending_Succes()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
         project.Start();
 
         // Act
@@ -96,7 +103,8 @@ public class ProjectTests
     public void ProjectIsCreated_SetPaymentPending_ThrowException()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);        
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
 
         // Act
         project.SetPaymentPending();
@@ -110,7 +118,8 @@ public class ProjectTests
     public void Project_Update_Succes()
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
 
         // Act
         project.Update("projeto legal", "projeto com c# e teste unitarios", 2500);
@@ -126,7 +135,8 @@ public class ProjectTests
     public void Project_Delete_Succes() 
     {
         // Arrange
-        var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        //var project = new Project(1, 1, "Teste projeto", "Isso é uma descrição legal", 1000);
+        var project = FakeDataHelper.CreateFakeProject();
 
         // Act
         project.SetAsDeleted();
